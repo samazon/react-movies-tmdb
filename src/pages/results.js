@@ -8,6 +8,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 const Results = () => {
   const router = useRouter();
   const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     if (router.query) {
@@ -24,6 +25,10 @@ const Results = () => {
       fetchMovies();
     }
   }, [router.query]);
+
+  const loadMoreData = () => {
+    setPage(page + 1); // Increment the page to load
+  };
 
   return (
     <Layout>
