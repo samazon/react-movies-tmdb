@@ -54,7 +54,6 @@ export default function Home() {
       const updatedGenres = prevGenres.includes(genreId)
         ? prevGenres.filter((id) => id !== genreId)
         : [...prevGenres, genreId];
-      console.log(updatedGenres); // Check the updated selectedGenres
       return updatedGenres;
     });
   };
@@ -71,7 +70,7 @@ export default function Home() {
     setSortOption(e.target.value);
   };
 
-  const handleFilterButtonClick = () => {
+  const handleFilterButtonClick = async () => {
     // Gather selected filters
     const filters = {
       page: page,
@@ -81,10 +80,16 @@ export default function Home() {
       sort_by: sortOption,
     };
 
-    router.push({
-      pathname: "/results",
-      query: { ...filters },
-    });
+    try {
+      const data = await getFilteredMovies({ ...filters });
+      localStorage.removeItem("sortedMovies");
+      localStorage.setItem("sortedMovies", JSON.stringify(data.results));
+      router.push({
+        pathname: "/results",
+      });
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
