@@ -76,7 +76,7 @@ const MovieFilters = ({
             />
             All
           </label>
-          {[2023, 2023, 2021].map((year) => (
+          {[2023, 2022, 2021].map((year) => (
             <label key={year}>
               <input
                 type="radio"
