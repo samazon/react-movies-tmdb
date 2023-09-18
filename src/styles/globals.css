@@ -2,26 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.Navbar {
+  padding: 20px 0;
+  margin: 0 0 30px;
+  background-color: bisque;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.Navbar a {
+  margin: 0 20px;
+  font-size: 16px;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.Navbar a:hover {
+  color: crimson;
+}
+
+.MovieListWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.MovieCard {
+  display: flex;
+  height: 500px;
+  width: 300px;
+  background-color: white;
+  border: 3px solid lightgray;
+  border-radius: 8px;
+  flex-direction: column;
+  margin: 20px;
+  position: relative;
 }
